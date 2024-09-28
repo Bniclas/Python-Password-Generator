@@ -6,13 +6,15 @@ class passwordGenerator:
     Capitals = 3
     Letters = 10
 
+    SpecialCharacters = ['#', '%', '!', '?', '$']
+
     @classmethod
     def generate( cls ):
         keyword = ""
-        for i in range( cls.Numbers ):
-            keyword += chr( random.randint( 33, 47 ) )
-
         for i in range( cls.Specials ):
+            keyword += cls.SpecialCharacters[ random.randint( 0, len(cls.SpecialCharacters)-1 ) ]
+
+        for i in range( cls.Numbers ):
             keyword += chr( random.randint( 48, 57 ) )
 
         for i in range( cls.Capitals ):
