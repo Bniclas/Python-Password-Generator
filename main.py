@@ -11,20 +11,20 @@ class passwordGenerator:
     @classmethod
     def generate( cls ):
         keyword = ""
-        for i in range( cls.Specials ):
-            keyword += cls.SpecialCharacters[ random.randint( 0, len(cls.SpecialCharacters)-1 ) ]
 
-        for i in range( cls.Numbers ):
-            keyword += chr( random.randint( 48, 57 ) )
+        keyword += keyword.join( cls.SpecialCharacters[ random.randint( 0, len(cls.SpecialCharacters)-1 ) ] for i in range( cls.Specials ) )
 
-        for i in range( cls.Capitals ):
-            keyword += chr( random.randint( 65, 90 ) )
 
-        for i in range( cls.Letters ):
-            keyword += chr( random.randint( 97, 122 ) )
+        keyword += "".join( chr( random.randint( 48, 57 ) ) for i in range( cls.Numbers ) )
+
+
+        keyword += "".join( chr( random.randint( 65, 90 ) ) for i in range( cls.Capitals ) )
+
+        
+        keyword += "".join( chr( random.randint( 97, 122 ) ) for i in range( cls.Letters ) )
 
     
-        result = "".join( random.sample( keyword, len( keyword ) ) )
+        keyword = "".join( random.sample( keyword, len( keyword ) ) )
 
-        return result
+        return keyword
 
